@@ -57,7 +57,6 @@ namespace LoggingMiddleware
             var status = context.Response.StatusCode;
 
             // Do anything
-            string requestUrlString = $"{verbo}: {url}";
             _logger.LogInformation($"\nRequest:\n{verbo}: {url}\n{request}\nResponse: {status}\n{response}");
         }
     }
