@@ -19,5 +19,12 @@ namespace LoggingMiddleware.Controllers
             Names.Add(info.Name);
             return Ok(new { Status = "Success", Message = "The name has been added." });
         }
+
+        [HttpGet("{anything}")]
+        public string Other([FromRoute]string anything, [FromQuery]string another)
+        {
+            return "Done";
+        }
+
     }
 }

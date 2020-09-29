@@ -52,12 +52,15 @@ namespace LoggingMiddleware
             }
 
             // Get others request/response data
+            var verb = context.Request.Method;
             var url = UriHelper.GetDisplayUrl(context.Request);
-            var verbo = context.Request.Method;
+            var route = (context.GetEndpoint() as Microsoft.AspNetCore.Routing.RouteEndpoint)?.RoutePattern?.RawText;
+            var fromRoute = context.Request.RouteValues?["anything"];
+            var fromQuery = context.Request.Query?["another"];
             var status = context.Response.StatusCode;
 
             // Do anything
-            _logger.LogInformation($"\nRequest:\n{verbo}: {url}\n{request}\nResponse: {status}\n{response}");
+            _logger.LogInformation($"\nRequest:\n{verb}: {url}\n{request}\nResponse: {status}\n{response}\nRoute: {route}");
         }
     }
 
