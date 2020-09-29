@@ -20,6 +20,7 @@ namespace LoggingMiddleware.Controllers
             return Ok(new { Status = "Success", Message = "The name has been added." });
         }
 
+        [Logged] // <- An Alternative
         [HttpGet("{anything}")]
         public string Other([FromRoute]string anything, [FromQuery]string another)
         {
